@@ -1,11 +1,21 @@
-// State (equivalent to useState(0))
-let count = 0;
+// State
+let isLoggedIn = false;
 
-// DOM Element
-const counterBtn = document.getElementById('counterBtn');
+// DOM Elements
+const message = document.getElementById("message");
+const authBtn = document.getElementById("authBtn");
 
-// Event Handler (equivalent to setCount(count + 1))
-counterBtn.addEventListener('click', () => {
-  count += 1;
-  counterBtn.textContent = `Count: ${count}`;
+// Event Handler
+authBtn.addEventListener("click", () => {
+  // Toggle login state
+  isLoggedIn = !isLoggedIn;
+
+  // Conditional Rendering
+  if (isLoggedIn) {
+    message.textContent = "Welcome, User!";
+    authBtn.textContent = "Logout";
+  } else {
+    message.textContent = "Please Login";
+    authBtn.textContent = "Login";
+  }
 });
